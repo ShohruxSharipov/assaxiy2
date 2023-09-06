@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.myapplication.databinding.FragmentKirishBinding
+import android.widget.Toast
 import com.example.myapplication.databinding.FragmentRoyxatdanOtishBinding
 
 // TODO: Rename parameter arguments, choose names that match
@@ -34,11 +34,19 @@ class RoyxatdanOtish : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val binding = FragmentRoyxatdanOtishBinding.inflate(inflater,container,false)
 
         binding.royxatdan.setOnClickListener{
-            parentFragmentManager.beginTransaction().replace(R.id.main_window,Royxatdan_Otish_2()).commit()
+            parentFragmentManager.beginTransaction().replace(R.id.main_window,RoyxatdanOtish2()).commit()
+        }
+
+        binding.materialButton.setOnClickListener {
+            if (binding.emayil.text.toString().isBlank() || binding.paro.text.toString().isBlank()){
+                Toast.makeText(requireContext(), "Hammasini to'ldiring !", Toast.LENGTH_SHORT).show()
+            }else{
+                Toast.makeText(requireContext(), "Account topilmadi! \n Iltimos ro'yxatdan o'ting", Toast.LENGTH_SHORT).show()
+            }
         }
 
         return binding.root

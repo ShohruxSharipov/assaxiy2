@@ -1,5 +1,6 @@
 package com
 
+import android.content.Context
 import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater
@@ -7,10 +8,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.myapplication.Kirish
 import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentSplashBinding
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import com.user.User
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -40,10 +45,28 @@ class Splash : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val binding = FragmentSplashBinding.inflate(inflater, container, false)
-        val anim = AnimationUtils.loadAnimation(requireContext(),R.anim.animation)
-        binding.process.startAnimation(anim)
+        val gson = Gson()
+        object : TypeToken<List<User>>() {}.type
+        val activity = activity as AppCompatActivity
+        val cache = activity.getSharedPreferences("Cache", Context.MODE_PRIVATE)
         val handler = Handler()
-        handler.postDelayed({parentFragmentManager.beginTransaction().replace(R.id.main_window,Kirish()).commit()},4000)
+        val anim = AnimationUtils.loadAnimation(requireContext(), R.anim.animation)
+        binding.process.startAnimation(anim)
+
+        val str = cache.getString("user", "")
+        if (str.isNullOrBlank()) {
+            handler.postDelayed({
+                parentFragmentManager.beginTransaction().replace(R.id.main_window, Kirish())
+                    .commit()
+            }, 4000)
+        }else{
+            handler.postDelayed({
+                parentFragmentManager.beginTransaction().replace(R.id.main_window, Asosiy_Oyna())
+                    .commit()
+            }, 4000)
+        }
+
+
         return binding.root
     }
 

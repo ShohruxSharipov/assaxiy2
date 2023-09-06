@@ -57,10 +57,11 @@
         android:textColorHint="#0f1d4c">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/emayil"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="abcdef@gmail.com"
-            android:textColor="#0f1d4c"/>
+            android:hint="email"
+            android:textColor="#0f1d4c" />
     </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -88,14 +89,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3"
         android:textColorHint="#0f1d4c"
-        android:hint="******"
+        android:hint="•••••••••"
         app:endIconMode="password_toggle">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/paro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="#0f1d4c"
-            android:inputType="textPassword"/>
+            android:inputType="textPassword"
+            android:textColor="#0f1d4c" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
@@ -126,7 +128,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="70dp"
         android:layout_marginEnd="24dp"
         android:backgroundTint="#B8E8F2"
         android:text="Kirish"
@@ -150,8 +152,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="92dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
         android:text="Hisobingiz yo'qmi ?"
         android:textColor="#0f1d4c"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toStartOf="@+id/royxatdan"
+        app:layout_constraintHorizontal_bias="0.35"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
@@ -160,9 +167,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginEnd="77dp"
         android:text="Ro'yxatdan o'tish"
         android:textColor="#B8E8F2"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView7"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView7"
         app:layout_constraintTop_toTopOf="@+id/textView7" />
 
