@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.adapter.adapter
+import com.adapter.adapter_darslik
+import com.books.Darslik
 import com.books.book
 import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentAsosiyOynaBinding
@@ -38,14 +40,22 @@ class Asosiy_Oyna : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val binding = FragmentAsosiyOynaBinding.inflate(inflater,container,false)
+        val list2 = mutableListOf<Darslik>()
+
+        list2.add(Darslik(R.drawable.darslik1))
+        list2.add(Darslik(R.drawable.darslik2))
+        list2.add(Darslik(R.drawable.darslik3))
+        list2.add(Darslik(R.drawable.darslik4))
 
         list.add(book("Yulduzli tunlar",R.drawable.book1,"8.2"))
         list.add(book("Urush tugasa",R.drawable.book2,"8.5"))
         list.add(book("Ikki eshik orasi",R.drawable.book3,"7.4"))
         list.add(book("Harry potter 2",R.drawable.book4,"8.6"))
         val adapter = adapter(list)
+        val adapter2 = adapter_darslik(list2)
 
         binding.recycleview.adapter = adapter
+        binding.recycleview2.adapter = adapter2
 
         return binding.root
     }
