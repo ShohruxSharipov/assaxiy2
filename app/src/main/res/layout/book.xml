@@ -5,7 +5,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:backgroundTint="#C1C1C1"
     app:cardCornerRadius="15dp"
-    android:layout_margin="10dp">
+    android:layout_margin="10dp"
+    android:id="@+id/wholeCardBook">
     <ImageView
         android:id="@+id/book"
         android:layout_width="70dp"

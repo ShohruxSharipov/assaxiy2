@@ -1,21 +1,19 @@
 package com
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
-import android.os.Handler
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.Animation
-import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
-import com.example.myapplication.Kirish
 import com.example.myapplication.R
-import com.example.myapplication.databinding.FragmentSplashBinding
+import com.example.myapplication.databinding.NavHeaderBinding
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.user.User
+import kotlin.reflect.typeOf
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,10 +22,10 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [Splash.newInstance] factory method to
+ * Use the [NavHeader.newInstance] factory method to
  * create an instance of this fragment.
  */
-class Splash : Fragment() {
+class NavHeader : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -40,33 +38,22 @@ class Splash : Fragment() {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = FragmentSplashBinding.inflate(inflater, container, false)
-        val gson = Gson()
-        object : TypeToken<List<User>>() {}.type
+        val binding = NavHeaderBinding.inflate(inflater,container,false)
+
         val activity = activity as AppCompatActivity
-        val cache = activity.getSharedPreferences("Cache", Context.MODE_PRIVATE)
-        val handler = Handler()
-        val anim = AnimationUtils.loadAnimation(requireContext(), R.anim.animation)
-        binding.process.startAnimation(anim)
-
+        val cache = activity.getSharedPreferences("Cache",Context.MODE_PRIVATE)
         val str = cache.getString("user", "")
-        if (str.isNullOrBlank()) {
-            handler.postDelayed({
-                parentFragmentManager.beginTransaction().replace(R.id.main_window, Kirish())
-                    .commit()
-            }, 4000)
-        }else{
-            handler.postDelayed({
-                parentFragmentManager.beginTransaction().replace(R.id.main_window, BottomNav())
-                    .commit()
-            }, 1000)
-        }
+        val gson = Gson()
+        val type = object : TypeToken<List<User>>() {}.type
+        var list = mutableListOf<User>()
+        list = gson.fromJson(str, type)
 
-
+        binding.username.text = list[0].name + " " + list[0].surname
         return binding.root
     }
 
@@ -77,12 +64,12 @@ class Splash : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment Splash.
+         * @return A new instance of fragment NavHeader.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            Splash().apply {
+            NavHeader().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

@@ -6,11 +6,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.books.book
 import com.example.myapplication.databinding.BookBinding
 
-class adapter(val list:MutableList<book>):RecyclerView.Adapter<adapter.MyHolder>() {
+class adapter(val list:MutableList<book>, val itemclick:OnClick):RecyclerView.Adapter<adapter.MyHolder>() {
     class MyHolder(binding: BookBinding):RecyclerView.ViewHolder(binding.root){
         val photo = binding.book
         var name = binding.name
         var rank = binding.star
+        var item = binding.wholeCardBook
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyHolder {
@@ -25,5 +26,13 @@ class adapter(val list:MutableList<book>):RecyclerView.Adapter<adapter.MyHolder>
         holder.name.text = list[position].name
         holder.rank.text = list[position].star
         holder.photo.setBackgroundResource(list[position].photo)
+        holder.item.setOnClickListener {
+            itemclick.click(list[position])
+        }
+
+    }
+
+    interface OnClick{
+        fun click(book: book)
     }
 }

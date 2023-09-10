@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.Asosiy_Oyna
+import com.BottomNav
 import com.google.gson.Gson
 import com.example.myapplication.databinding.FragmentRoyxatdanOtish2Binding
 import com.google.gson.reflect.TypeToken
@@ -64,7 +65,7 @@ class RoyxatdanOtish2 : Fragment() {
                 )
                 users.add(user)
             edit.putString("user",gson.toJson(users)).apply()
-                parentFragmentManager.beginTransaction().replace(R.id.main_window, Asosiy_Oyna())
+                parentFragmentManager.beginTransaction().replace(R.id.main_window, BottomNav())
                     .commit()
             }
         }

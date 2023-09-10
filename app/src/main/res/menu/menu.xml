@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 <item android:id="@+id/kitob"
-    android:title="kitob"/>
+    android:title="kitob"
+    android:icon="@drawable/baseline_menu_book_24" />
+    <item android:id="@+id/searc"
+        android:title="search"
+        android:icon="@drawable/baseline_search_24"/>
+    <item android:id="@+id/feather"
+            android:title="feather"
+        android:icon="@drawable/feather"/>
+    <item android:id="@+id/heart"
+        android:title="Heart"
+        android:icon="@drawable/heart"/>
+    <item android:id="@+id/settings"
+        android:title="Settings"
+        android:icon="@drawable/settings" />
 </menu>
