@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import com.books.book
 import com.example.myapplication.databinding.FragmentKirishBinding
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -48,6 +49,18 @@ class Kirish : Fragment() {
         binding.royxatdano.setOnClickListener {
             parentFragmentManager.beginTransaction().replace(R.id.main_window,RoyxatdanOtish2()).commit()
         }
+
+
+        val list = mutableListOf<book>()
+        val gson = Gson()
+        object : TypeToken<List<User>>() {}.type
+        val activity = activity as AppCompatActivity
+        val cache = activity.getSharedPreferences("Cache", Context.MODE_PRIVATE)
+        list.add(book("Yulduzli tunlar",R.drawable.book1,"8.2"))
+        list.add(book("Urush tugasa",R.drawable.book2,"8.5"))
+        list.add(book("Ikki eshik orasi",R.drawable.book3,"7.4"))
+        list.add(book("Harry potter 2",R.drawable.book4,"8.6"))
+        cache.edit().putString("books",gson.toJson(list)).apply()
 
         return binding.root
     }

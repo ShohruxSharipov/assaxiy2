@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.books.book
 import com.example.myapplication.databinding.BookBinding
 
-class adapter(val list:MutableList<book>, val itemclick:OnClick):RecyclerView.Adapter<adapter.MyHolder>() {
+class adapter(val list:List<book>, val itemclick:OnClick):RecyclerView.Adapter<adapter.MyHolder>() {
     class MyHolder(binding: BookBinding):RecyclerView.ViewHolder(binding.root){
         val photo = binding.book
         var name = binding.name

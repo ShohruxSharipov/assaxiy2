@@ -1,5 +1,6 @@
 package com
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
 import androidx.drawerlayout.widget.DrawerLayout
 import com.adapter.adapter
@@ -16,6 +18,9 @@ import com.books.book
 import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentAsosiyOynaBinding
 import com.google.android.material.navigation.NavigationView
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import com.user.User
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -31,7 +36,6 @@ class Asosiy_Oyna : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-    val list = mutableListOf<book>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -46,18 +50,21 @@ class Asosiy_Oyna : Fragment() {
     ): View {
         val binding = FragmentAsosiyOynaBinding.inflate(inflater,container,false)
         val list2 = mutableListOf<Darslik>()
+        val gson = Gson()
+        val type = object : TypeToken<List<book>>() {}.type
+        val activity = activity as AppCompatActivity
+        val cache = activity.getSharedPreferences("Cache", Context.MODE_PRIVATE)
         lateinit var toggle:ActionBarDrawerToggle
-
+        var list = listOf<book>()
 
         list2.add(Darslik(R.drawable.darslik1))
         list2.add(Darslik(R.drawable.darslik2))
         list2.add(Darslik(R.drawable.darslik3))
         list2.add(Darslik(R.drawable.darslik4))
 
-        list.add(book("Yulduzli tunlar",R.drawable.book1,"8.2"))
-        list.add(book("Urush tugasa",R.drawable.book2,"8.5"))
-        list.add(book("Ikki eshik orasi",R.drawable.book3,"7.4"))
-        list.add(book("Harry potter 2",R.drawable.book4,"8.6"))
+        val str = cache.getString("books","")
+        list = gson.fromJson(str,type)
+
         val adapter = adapter(list, object : adapter.OnClick{
             override fun click(book: book) {
                 parentFragmentManager.beginTransaction().replace(R.id.main_window,InformationFragment.newInstance(book,"")).addToBackStack("orqaga").commit()
@@ -81,16 +88,16 @@ class Asosiy_Oyna : Fragment() {
         navView.setNavigationItemSelectedListener {
             when(it.itemId){
                 R.id.boshsahifa -> {
-                    Toast.makeText(requireContext(), "Home", Toast.LENGTH_SHORT).show()
+                    parentFragmentManager.beginTransaction().replace(R.id.bottomNav,Asosiy_Oyna()).commit()
                 }
                 R.id.qidiruv -> {
-                    Toast.makeText(requireContext(), "Settings", Toast.LENGTH_SHORT).show()
+                    parentFragmentManager.beginTransaction().replace(R.id.bottomNav,Search()).commit()
                 }
                 R.id.maqola -> {
-                    Toast.makeText(requireContext(), "Logout", Toast.LENGTH_SHORT).show()
+                    parentFragmentManager.beginTransaction().replace(R.id.bottomNav,Search()).commit()
                 }
                 R.id.til -> {
-                    Toast.makeText(requireContext(), "Share", Toast.LENGTH_SHORT).show()
+                    parentFragmentManager.beginTransaction().replace(R.id.bottomNav,Search()).commit()
                 }
             }
             true

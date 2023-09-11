@@ -1,5 +1,6 @@
 package com
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.os.Handler
@@ -11,6 +12,7 @@ import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.books.book
 import com.example.myapplication.Kirish
 import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentSplashBinding
@@ -41,13 +43,14 @@ class Splash : Fragment() {
         }
     }
 
+    @SuppressLint("CommitPrefEdits")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val binding = FragmentSplashBinding.inflate(inflater, container, false)
         val gson = Gson()
-        object : TypeToken<List<User>>() {}.type
+        val type = object : TypeToken<List<User>>() {}.type
         val activity = activity as AppCompatActivity
         val cache = activity.getSharedPreferences("Cache", Context.MODE_PRIVATE)
         val handler = Handler()
@@ -65,6 +68,8 @@ class Splash : Fragment() {
                 parentFragmentManager.beginTransaction().replace(R.id.main_window, BottomNav())
                     .commit()
             }, 1000)
+
+
         }
 
 

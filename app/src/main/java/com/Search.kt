@@ -1,12 +1,23 @@
 package com
 
+import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.addTextChangedListener
+import com.adapter.adapter
+import com.books.Darslik
+import com.books.book
 import com.example.myapplication.R
+import com.example.myapplication.databinding.FragmentSearch2Binding
 import com.example.myapplication.databinding.FragmentSearchBinding
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import com.user.User
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -35,7 +46,43 @@ class Search : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = FragmentSearchBinding.inflate(inflater,container,false)
+        val binding = FragmentSearch2Binding.inflate(inflater,container,false)
+        val gson = Gson()
+        val type = object : TypeToken<List<book>>() {}.type
+        val activity = activity as AppCompatActivity
+        val cache = activity.getSharedPreferences("Cache", Context.MODE_PRIVATE)
+        var list2 = listOf<book>()
+        val str = cache.getString("books","")
+        list2 = gson.fromJson(str,type)
+
+        Log.d("TAG", "onCreateView: ${list2}")
+        var adapter = adapter(list2,object : adapter.OnClick{
+            override fun click(book: book) {
+                parentFragmentManager.beginTransaction().replace(R.id.main_window,InformationFragment.newInstance(book,"")).addToBackStack("back").commit()
+            }})
+
+        binding.searchedRecycle.adapter = adapter
+
+        binding.searching.addTextChangedListener {
+            var itemFilter = mutableListOf<book>()
+            if (it!!.length > 0 && it.isNotBlank()){
+                for (i in list2){
+                    if (i.name.contains(it)){
+                        itemFilter.add(i)
+                    }
+                }
+                adapter = adapter(itemFilter,object : adapter.OnClick{
+                    override fun click(book: book) {
+                        parentFragmentManager.beginTransaction().replace(R.id.main_window,InformationFragment.newInstance(book,"")).addToBackStack("back").commit()
+                    }})
+
+            }else adapter = adapter(list2,object : adapter.OnClick{
+            override fun click(book: book) {
+                parentFragmentManager.beginTransaction().replace(R.id.main_window,InformationFragment.newInstance(book,"")).addToBackStack("back").commit()
+            }})
+
+            binding.searchedRecycle.adapter = adapter
+        }
 
         return binding.root
     }

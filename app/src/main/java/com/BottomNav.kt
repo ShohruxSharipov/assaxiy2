@@ -44,7 +44,7 @@ class BottomNav : Fragment() {
                     parentFragmentManager.beginTransaction().replace(R.id.bottomNav, Asosiy_Oyna()).commit()
                 }
                 R.id.searc -> {
-                    parentFragmentManager.beginTransaction().replace(R.id.bottomNav,SearchFragment()).commit()
+                    parentFragmentManager.beginTransaction().replace(R.id.bottomNav,Search()).commit()
                 }
                 R.id.feather -> {
                     parentFragmentManager.beginTransaction().replace(R.id.bottomNav,SearchFragment()).commit()
