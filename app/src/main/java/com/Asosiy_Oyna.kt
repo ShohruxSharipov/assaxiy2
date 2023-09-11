@@ -48,6 +48,7 @@ class Asosiy_Oyna : Fragment() {
         val list2 = mutableListOf<Darslik>()
         lateinit var toggle:ActionBarDrawerToggle
 
+
         list2.add(Darslik(R.drawable.darslik1))
         list2.add(Darslik(R.drawable.darslik2))
         list2.add(Darslik(R.drawable.darslik3))

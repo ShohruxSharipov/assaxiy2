@@ -3,17 +3,19 @@ package com
 import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.myapplication.R
-import com.example.myapplication.databinding.NavHeaderBinding
+import com.example.myapplication.databinding.FragmentNavHeaderBinding
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.user.User
-import kotlin.reflect.typeOf
+import java.util.Objects
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -43,17 +45,15 @@ class NavHeader : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = NavHeaderBinding.inflate(inflater,container,false)
-
+        val binding = FragmentNavHeaderBinding.inflate(inflater,container,false)
         val activity = activity as AppCompatActivity
         val cache = activity.getSharedPreferences("Cache",Context.MODE_PRIVATE)
-        val str = cache.getString("user", "")
         val gson = Gson()
-        val type = object : TypeToken<List<User>>() {}.type
-        var list = mutableListOf<User>()
-        list = gson.fromJson(str, type)
+        val type = object:TypeToken<List<User>>(){}.type
 
-        binding.username.text = list[0].name + " " + list[0].surname
+        val list = cache.getString("user","")
+        val list_own = gson.fromJson<List<User>>(list,type)
+        binding.username.text = list_own[0].name
         return binding.root
     }
 

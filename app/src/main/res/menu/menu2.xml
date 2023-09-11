@@ -24,10 +24,10 @@
     <menu>
         <item android:id="@+id/telegram"
             android:title="Telegram"
-            android:icon="@drawable/baseline_bookmark"/>
+            android:icon="@drawable/telegram"/>
         <item android:id="@+id/insta"
             android:title="Instagram"
-            android:icon="@drawable/baseline_bookmark"/>
+            android:icon="@drawable/instagram"/>
     </menu>
 </item>
 
