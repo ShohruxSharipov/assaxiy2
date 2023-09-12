@@ -1,14 +1,18 @@
 package com
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import com.books.book
 import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentInformationBinding
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -38,6 +42,22 @@ class InformationFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val binding = FragmentInformationBinding.inflate(inflater,container,false)
+        val gson = Gson()
+        val type = object : TypeToken<List<book>>() {}.type
+        val activity = activity as AppCompatActivity
+        val cache = activity.getSharedPreferences("Cache", Context.MODE_PRIVATE)
+        var list = listOf<book>()
+        val str = cache.getString("books","")
+        list = gson.fromJson(str,type)
+        var book:book = param1!!
+
+        for (i in list){
+            if (i == param1){
+                book = i
+            }
+        }
+
+
         binding.imageView4.setOnClickListener{
             val activity : AppCompatActivity = activity as AppCompatActivity
             activity.onBackPressedDispatcher.onBackPressed()
@@ -45,6 +65,36 @@ class InformationFragment : Fragment() {
 
         binding.imageView3.setBackgroundResource(param1!!.photo)
         binding.textView13.text = param1!!.name
+
+        if (param1!!.selected == false){
+            binding.imageView5.setBackgroundResource(R.drawable.baseline_bookmark_24)
+        }else {
+            binding.imageView5.setBackgroundResource(R.drawable.baseline_bookmark)
+        }
+
+        binding.imageView5.setOnClickListener {
+            if (book!!.selected == false) {
+                binding.imageView5.setBackgroundResource(R.drawable.baseline_bookmark_24)
+                book.selected = true
+//                for (i in list) {
+//                    if (i == param1) {
+//                        i.selected = true
+//                        cache.edit().putString("books", gson.toJson(list)).apply()
+//                        break
+//                    }
+//                }
+
+            } else {
+                binding.imageView5.setBackgroundResource(R.drawable.baseline_bookmark)
+//                for (i in list) {
+//                    if (i == param1) {
+//                        i.selected = true
+//                        cache.edit().putString("books", gson.toJson(list)).apply()
+//                        break
+//                    }
+//                }
+            }
+        }
         return binding.root
     }
 
