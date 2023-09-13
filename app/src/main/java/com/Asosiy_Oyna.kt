@@ -2,6 +2,7 @@ package com
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -57,6 +58,7 @@ class Asosiy_Oyna : Fragment() {
         lateinit var toggle:ActionBarDrawerToggle
         var list = listOf<book>()
 
+
         list2.add(Darslik(R.drawable.darslik1))
         list2.add(Darslik(R.drawable.darslik2))
         list2.add(Darslik(R.drawable.darslik3))
@@ -67,7 +69,12 @@ class Asosiy_Oyna : Fragment() {
 
         val adapter = adapter(list, object : adapter.OnClick{
             override fun click(book: book) {
-                parentFragmentManager.beginTransaction().replace(R.id.main_window,InformationFragment.newInstance(book,"")).addToBackStack("orqaga").commit()
+                for (i in list){
+                    if (i == book){
+                        parentFragmentManager.beginTransaction().replace(R.id.main_window,InformationFragment.newInstance("",list.indexOf(i))).addToBackStack("orqaga").commit()
+                        break
+                    }
+                }
             }
 
         })
@@ -101,6 +108,11 @@ class Asosiy_Oyna : Fragment() {
                 }
             }
             true
+        }
+
+
+        binding.search.setOnClickListener {
+            parentFragmentManager.beginTransaction().replace(R.id.bottomNav,Search()).commit()
         }
 
         return binding.root

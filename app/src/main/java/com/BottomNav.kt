@@ -50,7 +50,7 @@ class BottomNav : Fragment() {
                     parentFragmentManager.beginTransaction().replace(R.id.bottomNav,SearchFragment()).commit()
                 }
                 R.id.heart -> {
-                    parentFragmentManager.beginTransaction().replace(R.id.bottomNav,SearchFragment()).commit()
+                    parentFragmentManager.beginTransaction().replace(R.id.bottomNav,SelectedItemsFragment()).commit()
                 }
                 R.id.settings -> {
                     parentFragmentManager.beginTransaction().replace(R.id.bottomNav,SearchFragment()).commit()
