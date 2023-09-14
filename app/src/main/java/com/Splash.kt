@@ -2,6 +2,7 @@ package com
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater
@@ -15,6 +16,8 @@ import androidx.fragment.app.Fragment
 import com.books.book
 import com.example.myapplication.Kirish
 import com.example.myapplication.R
+import com.example.myapplication.databinding.FragmentAsosiyOynaBinding
+import com.example.myapplication.databinding.FragmentNavHeaderBinding
 import com.example.myapplication.databinding.FragmentSplashBinding
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -56,14 +59,23 @@ class Splash : Fragment() {
         val handler = Handler()
         val anim = AnimationUtils.loadAnimation(requireContext(), R.anim.animation)
         binding.process.startAnimation(anim)
+        var listUser = mutableListOf<User>()
 
         val str = cache.getString("user", "")
+
+
         if (str.isNullOrBlank()) {
             handler.postDelayed({
                 parentFragmentManager.beginTransaction().replace(R.id.main_window, Kirish())
                     .commit()
             }, 4000)
         }else{
+            listUser = gson.fromJson(str,type)
+            val binding2 = FragmentNavHeaderBinding.inflate(LayoutInflater.from(requireContext()),container,false)
+            binding2.username.setText(listUser[0].name)
+            binding2.username.setTextColor(Color.WHITE)
+
+            Toast.makeText(requireContext(), "${binding2.username.text}", Toast.LENGTH_SHORT).show()
             handler.postDelayed({
                 parentFragmentManager.beginTransaction().replace(R.id.main_window, BottomNav())
                     .commit()
