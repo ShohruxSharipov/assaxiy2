@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="kerakli_tilni_qidiring">Найдите нужный язык…</string>
+    <string name="bosh_sahifa">Главная страница</string>
+    <string name="kitob_yoki_muallifni_qidiring">Найдите книгу или автора…</string>
+    <string name="romanlar">Романы</string>
+    <string name="darsliklar">Учебники</string>
+    <string name="app_name">My Application</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="o_tkir_hoshimovning_bahor_qaytmaydi_asari">Творчество Откира Гашимова Bahor Qaytmaydi</string>
+    <string name="kitoblarni_qidiring">Поиск книг</string>
+    <string name="rossiya_va_xitoy_yaqinlashuvi_kim_n_nimadan_manfaatdor">Сближение России и Китая: кто в чем заинтересован?</string>
+    <string name="eng_so_ngi_maqolalar">Последние статьи</string>
+    <string name="batafsil">Более</string>
+    <string name="tavsifi">Описание</string>
+    <string name="sharhlar">Комментарии</string>
+    <string name="iqtiboslar">Кавычки</string>
+    <string name="text1">Пока мы вступили в новую эпоху, мы будем всячески следить за новостями этой новой эпохи и будем обновляться в подобных эпосах, романах и рассказах, чтобы сделать наш народ «Тахир-Зухрой» этого времени. лар, «Чор дервиши», «Фарход-Ширин» и «Бахромгор». То, что я собираюсь написать, — это «Прошлые дни», небольшой эксперимент на пути знакомства с романом нового времени, точнее, хобби. Известно, что каждое произведение ново – для него естественно выходить на сцену со многими недостатками в первоначальный период и постепенно восстанавливаться и развиваться вместе с недостатками своего народа. Поэтому меня воодушевляла моя страсть, я не боялся недостатков и ошибок, скрывающихся за моей страстью. Говорят, хорошо вернуться в Мозий работать. Соответственно, я выбрал тему из современности, из недавнего прошлого, из очередных «ханских времен», которые были самыми грязными и мрачными днями нашей истории.</string>
+    <string name="asosiy">Главний</string>
+    <string name="qidiruv">Поиск</string>
+    <string name="maqolalar">Статьи</string>
+    <string name="saqlanganlar">Избранные</string>
+    <string name="tilni_o_zgartirish">Изменить язык</string>
+    <string name="ijtimoiy">Социальное</string>
+    <string name="telegram">Телеграм</string>
+    <string name="instagram">Инстаграм</string>
+    <string name="ulashish">Поделиться</string>
+    <string name="bizga_baho_bering">Оцените нас</string>
+    <string name="account">Акаунт</string>
+    <string name="hisobdan_chiqish">Выход</string>
+    <string name="familiya">Фамилия</string>
+    <string name="ism">Имя</string>
+    <string name="email">Электронная почта</string>
+    <string name="parol">Пароль</string>
+    <string name="parolni_takrorlang">Повторите пароль</string>
+    <string name="iltimos_kutib_turing">пожалуйста, подождите …</string>
+</resources>

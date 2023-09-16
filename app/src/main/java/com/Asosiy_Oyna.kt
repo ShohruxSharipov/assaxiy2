@@ -106,10 +106,13 @@ class Asosiy_Oyna : Fragment() {
                     parentFragmentManager.beginTransaction().replace(R.id.bottomNav,Search()).commit()
                 }
                 R.id.maqola -> {
-                    parentFragmentManager.beginTransaction().replace(R.id.bottomNav,Search()).commit()
+                    parentFragmentManager.beginTransaction().replace(R.id.bottomNav,NewsFragment()).commit()
                 }
                 R.id.til -> {
-                    parentFragmentManager.beginTransaction().replace(R.id.bottomNav,Search()).commit()
+                    parentFragmentManager.beginTransaction().replace(R.id.bottomNav,LanguageFragment()).commit()
+                }
+                R.id.saqlangan -> {
+                    parentFragmentManager.beginTransaction().replace(R.id.bottomNav,SelectedItemsFragment()).commit()
                 }
             }
             true

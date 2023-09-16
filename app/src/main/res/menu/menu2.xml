@@ -1,51 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-<item android:title="Asosiy">
+<item android:title="@string/asosiy">
     <menu>
         <item android:id="@+id/boshsahifa"
-            android:title="Bosh sahifa"
+            android:title="@string/bosh_sahifa"
             android:icon="@drawable/baseline_menu_book_24"/>
         <item android:id="@+id/qidiruv"
-            android:title="Qidiruv"
+            android:title="@string/qidiruv"
             android:icon="@drawable/baseline_search_24"/>
         <item android:id="@+id/maqola"
-            android:title="Maqolalar"
+            android:title="@string/maqolalar"
             android:icon="@drawable/feather"/>
         <item android:id="@+id/saqlangan"
-            android:title="Saqlanganlar"
+            android:title="@string/saqlanganlar"
             android:icon="@drawable/heart"/>
         <item android:id="@+id/til"
-            android:title="Tilni o'zgartirish"
+            android:title="@string/tilni_o_zgartirish"
             android:icon="@drawable/settings"/>
     </menu>
 </item>
 
-<item android:title="Ijtimoiy">
+<item android:title="@string/ijtimoiy">
     <menu>
         <item android:id="@+id/telegram"
-            android:title="Telegram"
+            android:title="@string/telegram"
             android:icon="@drawable/telegram"/>
         <item android:id="@+id/insta"
-            android:title="Instagram"
+            android:title="@string/instagram"
             android:icon="@drawable/instagram"/>
     </menu>
 </item>
 
-<item android:title="Ulashish">
+<item android:title="@string/ulashish">
     <menu>
         <item android:id="@+id/ulash"
-            android:title="Ulashish"
+            android:title="@string/ulashish"
             android:icon="@drawable/baseline_share_24"/>
         <item android:id="@+id/baho"
-            android:title="Bizga baho bering"
+            android:title="@string/bizga_baho_bering"
             android:icon="@drawable/baseline_star_24"/>
     </menu>
 </item>
 
-<item android:title="Account">
+<item android:title="@string/account">
     <menu>
         <item android:id="@+id/chiqhs"
-            android:title="Hisobdan chiqish"
+            android:title="@string/hisobdan_chiqish"
             android:icon="@drawable/baseline_logout_24"/>
     </menu>
 </item>

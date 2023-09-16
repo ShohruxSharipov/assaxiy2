@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
-        android:text="Familiya"
+        android:text="@string/familiya"
         android:textStyle="bold"
         android:textColor="#0f1d4c"
         android:textSize="18sp"
@@ -38,7 +38,8 @@
             android:id="@+id/familiyasi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Familiya"
+            android:hint="@string/familiya"
+            android:inputType="text"
             android:textColor="#0f1d4c" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -48,7 +49,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="70dp"
-        android:text="Ism"
+        android:text="@string/ism"
         android:textColor="#0f1d4c"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -73,7 +74,8 @@
             android:id="@+id/ismi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Ism"
+            android:hint="@string/ism"
+            android:inputType="text"
             android:textColor="#0f1d4c" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -94,7 +96,8 @@
             android:id="@+id/emaili"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="email"
+            android:hint="@string/email"
+            android:inputType="text"
             android:textColor="#0f1d4c" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -104,7 +107,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
-        android:text="Email"
+        android:text="@string/email"
         android:textStyle="bold"
         android:textColor="#0f1d4c"
         android:textSize="18sp"
@@ -117,7 +120,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="26dp"
         android:layout_marginTop="16dp"
-        android:text="Parol"
+        android:text="@string/parol"
         android:textStyle="bold"
         android:textColor="#0f1d4c"
         android:textSize="18sp"
@@ -132,7 +135,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
-        android:hint="•••••••••"
+        android:hint="@string/parol"
         android:textColorHint="#0f1d4c"
         app:endIconMode="password_toggle"
         app:layout_constraintEnd_toEndOf="parent"
@@ -154,7 +157,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="26dp"
         android:layout_marginTop="16dp"
-        android:text="Parolni takrorlang"
+        android:text="@string/parolni_takrorlang"
         android:textStyle="bold"
         android:textColor="#0f1d4c"
         android:textSize="18sp"
@@ -169,7 +172,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
-        android:hint="•••••••••"
+        android:hint="@string/parolni_takrorlang"
         android:textColorHint="#0f1d4c"
         app:endIconMode="password_toggle"
         app:layout_constraintEnd_toEndOf="parent"

@@ -1,12 +1,15 @@
 package com
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.adapter.PagerAdapter
+import com.books.book
 import com.example.myapplication.R
-import com.example.myapplication.databinding.FragmentBottomNavBinding
+import com.example.myapplication.databinding.FragmentNewsBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -15,10 +18,10 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [BottomNav.newInstance] factory method to
+ * Use the [NewsFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class BottomNav : Fragment() {
+class NewsFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -34,30 +37,17 @@ class BottomNav : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val binding = FragmentBottomNavBinding.inflate(inflater,container,false)
-        parentFragmentManager.beginTransaction().replace(R.id.bottomNav,Asosiy_Oyna()).commit()
+    ): View {
+        val binding = FragmentNewsBinding.inflate(inflater,container,false)
+        val list = mutableListOf<book>()
+        list.add(book("Rossiya va Xitoy yaqinlashuvi: kim \n nimadan manfaatdor?",R.drawable.rossiyaxitoy,"5"))
+        list.add(book("Rossiya va Xitoy yaqinlashuvi: kim \n nimadan manfaatdor?",R.drawable.rossiyaxitoy,"5"))
+        list.add(book("Rossiya va Xitoy yaqinlashuvi: kim \n nimadan manfaatdor?",R.drawable.rossiyaxitoy,"5"))
+        list.add(book("Rossiya va Xitoy yaqinlashuvi: kim \n nimadan manfaatdor?",R.drawable.rossiyaxitoy,"5"))
+        val adapter = PagerAdapter(list)
 
-        binding.navigationBar.setOnItemSelectedListener {
-            when (it.itemId) {
-                R.id.kitob -> {
-                    parentFragmentManager.beginTransaction().replace(R.id.bottomNav, Asosiy_Oyna()).commit()
-                }
-                R.id.searc -> {
-                    parentFragmentManager.beginTransaction().replace(R.id.bottomNav,Search()).commit()
-                }
-                R.id.feather -> {
-                    parentFragmentManager.beginTransaction().replace(R.id.bottomNav,NewsFragment()).commit()
-                }
-                R.id.heart -> {
-                    parentFragmentManager.beginTransaction().replace(R.id.bottomNav,SelectedItemsFragment()).commit()
-                }
-                R.id.settings -> {
-                    parentFragmentManager.beginTransaction().replace(R.id.bottomNav,LanguageFragment()).commit()
-                }
-            }
-            true
-        }
+        Log.d("TAG", "onCreateView: $list")
+//        binding.viewPager.adapter = adapter
         return binding.root
     }
 
@@ -68,12 +58,12 @@ class BottomNav : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment BottomNav.
+         * @return A new instance of fragment NewsFragment.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            BottomNav().apply {
+            NewsFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

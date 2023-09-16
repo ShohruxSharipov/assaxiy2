@@ -31,7 +31,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="1dp"
                     android:layout_marginTop="24dp"
-                    android:text="Bosh sahifa"
+                    android:text="@string/bosh_sahifa"
                     android:textColor="@color/kok"
                     android:textSize="20sp"
                     android:textStyle="bold"
@@ -55,7 +55,7 @@
                     android:layout_marginStart="24dp"
                     android:layout_marginTop="50dp"
                     android:layout_marginEnd="24dp"
-                    android:hint="Kitob yoki muallifni qidiring ..."
+                    android:hint="@string/kitob_yoki_muallifni_qidiring"
                     app:boxCornerRadiusBottomEnd="30dp"
                     app:boxCornerRadiusBottomStart="30dp"
                     app:boxCornerRadiusTopEnd="30dp"
@@ -67,7 +67,8 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
+                        android:layout_height="match_parent"
+                        android:inputType="text"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <androidx.cardview.widget.CardView
@@ -94,7 +95,7 @@
                         android:layout_gravity="center|start"
                         android:layout_marginStart="24dp"
                         android:layout_marginBottom="10dp"
-                        android:text="O'tkir Hoshimovning 'Bahor qaytmaydi' asari"
+                        android:text="@string/o_tkir_hoshimovning_bahor_qaytmaydi_asari"
                         android:textColor="@color/ochkok"
                         android:textSize="20sp" />
 
@@ -122,6 +123,13 @@
                         android:layout_marginEnd="-24dp"
                         android:layout_marginBottom="20dp"
                         android:background="@drawable/bahor" />
+
+                    <ImageView
+                        android:id="@+id/imageView11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/elipse278"
+                        android:layout_marginTop="60dp"/>
                 </androidx.cardview.widget.CardView>
 
 
@@ -131,7 +139,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
                     android:layout_marginTop="24dp"
-                    android:text="Romanlar"
+                    android:text="@string/romanlar"
                     android:textColor="@color/kok"
                     android:textSize="20sp"
                     android:textStyle="bold"
@@ -155,7 +163,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
                     android:layout_marginTop="16dp"
-                    android:text="Darsliklar"
+                    android:text="@string/darsliklar"
                     android:textColor="@color/kok"
                     android:textSize="20sp"
                     android:textStyle="bold"
