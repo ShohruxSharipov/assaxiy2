@@ -53,10 +53,14 @@ class Asosiy_Oyna : Fragment() {
         val list2 = mutableListOf<Darslik>()
         val gson = Gson()
         val type = object : TypeToken<List<book>>() {}.type
+        val type2 = object : TypeToken<List<User>>() {}.type
         val activity = activity as AppCompatActivity
         val cache = activity.getSharedPreferences("Cache", Context.MODE_PRIVATE)
         lateinit var toggle:ActionBarDrawerToggle
         var list = listOf<book>()
+        val list12 = gson.fromJson<List<User>>(cache.getString("user",""),type2)
+
+
 
 
         list2.add(Darslik(R.drawable.darslik1))
@@ -92,6 +96,7 @@ class Asosiy_Oyna : Fragment() {
 
 //        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
+        
         navView.setNavigationItemSelectedListener {
             when(it.itemId){
                 R.id.boshsahifa -> {

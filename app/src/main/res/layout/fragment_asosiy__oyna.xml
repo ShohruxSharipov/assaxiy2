@@ -98,6 +98,13 @@
                         android:textColor="@color/ochkok"
                         android:textSize="20sp" />
 
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ellipse"
+                        android:layout_gravity="end"
+                        android:layout_marginTop="60dp"/>
+
                     <com.google.android.material.button.MaterialButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -177,6 +184,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="start"
+            android:visibility="gone"
             android:fitsSystemWindows="true"
             app:headerLayout="@layout/fragment_nav_header"
             app:menu="@menu/menu2" />

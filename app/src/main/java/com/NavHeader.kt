@@ -9,7 +9,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import com.books.Darslik
+import com.books.book
 import com.example.myapplication.databinding.FragmentNavHeaderBinding
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -31,7 +34,16 @@ class NavHeader : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    private lateinit var binding: FragmentNavHeaderBinding
+init {
+    val gson = Gson()
+    val type2 = object : TypeToken<List<User>>() {}.type
+    val activity = activity as AppCompatActivity
+    val cache = activity.getSharedPreferences("Cache", Context.MODE_PRIVATE)
+    val list12 = gson.fromJson<List<User>>(cache.getString("user",""),type2)
 
+    Log.d("TAG2", "onCreateView: ${list12[0].name}")
+}
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -45,15 +57,13 @@ class NavHeader : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = FragmentNavHeaderBinding.inflate(inflater,container,false)
-        val activity = activity as AppCompatActivity
-        val cache = activity.getSharedPreferences("Cache",Context.MODE_PRIVATE)
-        val gson = Gson()
-        val type = object:TypeToken<List<User>>(){}.type
+        binding = FragmentNavHeaderBinding.inflate(inflater,container,false)
 
-        val list = cache.getString("user","")
-        val list_own = gson.fromJson<List<User>>(list,type)
-        binding.username.text = list_own[0].name
+
+
+
+
+
         return binding.root
     }
 
