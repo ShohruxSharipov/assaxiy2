@@ -54,11 +54,18 @@ class SelectedItemsFragment : Fragment() {
         list2 = gson.fromJson(str,type)
         var list = mutableListOf<book>()
 
+
         for (i in list2){
             if (i.selected){
                 list.add(i)
             }
         }
+
+
+
+        if (list.isEmpty()){
+            binding.tanlanganlartext.visibility = View.VISIBLE
+        }else binding.tanlanganlartext.visibility = View.INVISIBLE
 
         val adapter = adapterToSearch(list, object : adapter.OnClick{
             override fun click(book: book) {

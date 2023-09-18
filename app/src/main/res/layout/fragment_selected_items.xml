@@ -12,4 +12,14 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/seeking_item"/>
 
+    <TextView
+        android:visibility="invisible"
+        android:id="@+id/tanlanganlartext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tanlangan_kitoblar_yo_q"
+        android:textStyle="bold"
+        android:textSize="25sp"
+        android:layout_gravity="center"/>
+
 </FrameLayout>
