@@ -87,38 +87,6 @@ class Asosiy_Oyna : Fragment() {
         binding.recycleview.adapter = adapter
         binding.recycleview2.adapter = adapter2
 
-        val drawerlayout: DrawerLayout = binding.drlayout
-        val navView: NavigationView = binding.navView
-
-        toggle = ActionBarDrawerToggle(requireActivity(),drawerlayout,R.string.open,R.string.close)
-        drawerlayout.addDrawerListener(toggle)
-        toggle.syncState()
-
-//        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
-        
-        navView.setNavigationItemSelectedListener {
-            when(it.itemId){
-                R.id.boshsahifa -> {
-                    parentFragmentManager.beginTransaction().replace(R.id.bottomNav,Asosiy_Oyna()).commit()
-                }
-                R.id.qidiruv -> {
-                    parentFragmentManager.beginTransaction().replace(R.id.bottomNav,Search()).commit()
-                }
-                R.id.maqola -> {
-                    parentFragmentManager.beginTransaction().replace(R.id.bottomNav,NewsFragment()).commit()
-                }
-                R.id.til -> {
-                    parentFragmentManager.beginTransaction().replace(R.id.bottomNav,LanguageFragment()).commit()
-                }
-                R.id.saqlangan -> {
-                    parentFragmentManager.beginTransaction().replace(R.id.bottomNav,SelectedItemsFragment()).commit()
-                }
-            }
-            true
-        }
-
-
         binding.search.setOnClickListener {
             parentFragmentManager.beginTransaction().replace(R.id.bottomNav,Search()).commit()
         }

@@ -1,24 +1,20 @@
 package com
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
+import android.view.Display.Mode
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import com.books.Darslik
-import com.books.book
+import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentNavHeaderBinding
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.user.User
-import java.util.Objects
-
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -34,16 +30,7 @@ class NavHeader : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-    private lateinit var binding: FragmentNavHeaderBinding
-init {
-    val gson = Gson()
-    val type2 = object : TypeToken<List<User>>() {}.type
-    val activity = activity as AppCompatActivity
-    val cache = activity.getSharedPreferences("Cache", Context.MODE_PRIVATE)
-    val list12 = gson.fromJson<List<User>>(cache.getString("user",""),type2)
 
-    Log.d("TAG2", "onCreateView: ${list12[0].name}")
-}
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -52,18 +39,23 @@ init {
         }
     }
 
-    @SuppressLint("SetTextI18n")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentNavHeaderBinding.inflate(inflater,container,false)
+    ): View {
+        val binding = FragmentNavHeaderBinding.inflate(inflater,container,false)
+        val activity = activity as AppCompatActivity
+        val cache = activity.getSharedPreferences("Cache",Context.MODE_PRIVATE)
+        val type = object : TypeToken<List<User>>() {}.type
+        val gson = Gson()
+        val user = gson.fromJson<List<User>>(cache.getString("user",""),type)
+        binding.imageView12.setOnClickListener {
+            Log.d("TAG", "User: ${user[0].name}")
+            Toast.makeText(requireContext(), "sdfsdfsdf", Toast.LENGTH_SHORT).show()
+        }
 
 
-
-
-
-
+        binding.textView21.text = user[0].name
         return binding.root
     }
 

@@ -39,7 +39,7 @@ class Splash : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-    private var currentLanguage = "En"
+//    private var currentLanguage = "En"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,25 +53,22 @@ class Splash : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val binding = FragmentSplashBinding.inflate(inflater, container, false)
         val gson = Gson()
         val type = object : TypeToken<List<User>>() {}.type
-            val type2 = object : TypeToken<String>() {}.type
-            val activity = activity as AppCompatActivity
-            val cache = activity.getSharedPreferences("Cache", Context.MODE_PRIVATE)
+        val type2 = object : TypeToken<String>() {}.type
+        val activity = activity as AppCompatActivity
+        val cache = activity.getSharedPreferences("Cache", Context.MODE_PRIVATE)
         val handler = Handler()
         val anim = AnimationUtils.loadAnimation(requireContext(), R.anim.animation)
         binding.process.startAnimation(anim)
         var listUser = mutableListOf<User>()
 
-        val lan = cache.getString("lan","")
-        Toast.makeText(requireContext(), "LAN : $lan", Toast.LENGTH_SHORT).show()
-        if (lan != "" ){
-            currentLanguage = gson.fromJson(lan,type2)
-            setLocale(lan!!)
-        }else{
-            cache.edit().putString("lan",gson.toJson(currentLanguage)).apply()
+//        val lan = cache.getString("lan","")
+//        Toast.makeText(requireContext(), "LAN : $lan", Toast.LENGTH_SHORT).show()
+        if (cache.getString("lan","") != "" ){
+            setLocale(gson.fromJson(cache.getString("lan",""),type2))
         }
 
 
@@ -83,10 +80,6 @@ class Splash : Fragment() {
                     .commit()
             }, 4000)
         }else{
-            listUser = gson.fromJson(str,type)
-            val binding2 = FragmentNavHeaderBinding.inflate(LayoutInflater.from(requireContext()),container,false)
-            binding2.username.setText(listUser[0].name)
-            binding2.username.setTextColor(Color.WHITE)
             handler.postDelayed({
                 parentFragmentManager.beginTransaction().replace(R.id.main_window, BottomNav())
                     .commit()
@@ -97,20 +90,13 @@ class Splash : Fragment() {
         return binding.root
     }
 
-    private fun setLocale(localeName: String) {
-        if (localeName != currentLanguage) {
+    fun setLocale(localeName: String) {
             val locale = Locale(localeName)
             val res = resources
             val dm = res.displayMetrics
             val conf = res.configuration
             conf.locale = locale
             res.updateConfiguration(conf, dm)
-            currentLanguage = localeName
-            parentFragmentManager.beginTransaction().replace(R.id.bottomNav,LanguageFragment.newInstance(localeName,currentLanguage)).commit()
-        } else {
-            Toast.makeText(
-                requireActivity(), "Language, , already, , selected)!", Toast.LENGTH_SHORT).show();
-        }
     }
     companion object {
         /**
